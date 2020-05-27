@@ -1,0 +1,1 @@
+cmd_/home/pi/Desktop/0626/soft_uart.ko := ld -r  -EL -T ./scripts/module-common.lds -T ./arch/arm/kernel/module.lds  --build-id  -o /home/pi/Desktop/0626/soft_uart.ko /home/pi/Desktop/0626/soft_uart.o /home/pi/Desktop/0626/soft_uart.mod.o ;  true
