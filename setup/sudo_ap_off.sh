@@ -4,6 +4,11 @@
 
 #/etc/network/interfacesの修正(削除)
 sudo sh -c "rm -rf /etc/network/interfaces"
+sudo sh -c "rm -rf /etc/hostapd/hostapd.conf"
+sudo sh -c "rm -rf /etc/default/hostapd"
+sudo sh -c "rm -rf /etc/dnsmasq.conf"
+
+
 
 
 sudo systemctl stop  hostapd
