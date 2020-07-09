@@ -15,7 +15,7 @@ sudo sh -c "echo 'interface=wlan0\ndriver=nl80211\nssid=wolvez2020\nhw_mode=g\nc
 
 #/etc/default/hostapd を編集
 #もしかしたらデフォルトでなにか書いてあってそれ消す必要あるかも...?
-sudo sh -c "echo 'DAEMON_CONF="/etc/hostapd/hostapd.conf"'"
+sudo sh -c 'echo "DAEMON_CONF="/etc/hostapd/hostapd.conf""'
 
 
 #dnsmasqのインストール
@@ -24,7 +24,6 @@ sudo apt-get install dnsmasq
 sudo mv /etc/dnsmasq.conf /etc/dnsmasq.conf.orig
 #dnsmasq.confファイルに以下の項目を追加
 sudo sh -c "echo 'interface=wlan0\nlisten-address=192.168.7.1\nbind-interfaces\nserver=8.8.8.8\nserver=8.8.4.4\ndomain-needed\nbogus-priv\ndhcp-range=192.168.7.100,192.168.7.199,24h'>>/etc/dnsmasq.conf"
-
 
 
 #設定完了の喜びの舞
