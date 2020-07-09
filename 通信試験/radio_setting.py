@@ -6,7 +6,7 @@ import RPi.GPIO as GPIO
 
 # LoRa設定用クラス
 class LoraSettingClass:
-
+    
     def __init__(self, serial_device=''):
         try:  # インスタンス変数 serialDevice を生成
             self.device = serial.Serial(serial_device, 9600)
@@ -14,8 +14,9 @@ class LoraSettingClass:
             error_mes = '{0}'.format(e)
             print(error_mes)
         self.cmd = None
-        self.reset_pin = 12
+        self.reset_pin = 19
         self.set_mode = None
+        
 
     # LoRaに対して命令コマンドを入力する
     def cmd_lora(self, cmd=''):
@@ -44,6 +45,7 @@ class LoraSettingClass:
             try:
                 line = self.device.readline()
                 if line.find(b'Select'):
+                    #line = line.decode("EUC")
                     line = line.decode("utf-8")
                     print(line)
             except Exception as e:
@@ -57,6 +59,7 @@ class LoraSettingClass:
             try:
                 line = self.device.readline()
                 line = line.decode("utf-8")
+                #line = line.decode("EUC")
                 print(line)
             except Exception as e:
                 print(e)
