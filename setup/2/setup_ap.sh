@@ -19,7 +19,7 @@ sudo systemctl enable create_ap
 sudo systemctl start create_ap
 
 #２．ここから追加部分だけどいるか試す
-"""
+
 #network/interfacesファイルに以下の項目を追加
 sudo sh -c "echo 'source-directory /etc/network/interfaces.d\nauto lo\niface lo inet loopback\niface eth0 inet manual\nauto wlan0\nallow-hotplug wlan0\niface wlan0 inet static\naddress 192.168.7.1\nnetmask 255.255.255.0'>>/etc/network/interfaces"
 #echoだけだと'許可がありません'のエラーが発生した　参考→https://linuxfan.info/post-1818
@@ -41,6 +41,6 @@ sudo apt-get install dnsmasq
 sudo mv /etc/dnsmasq.conf /etc/dnsmasq.conf.orig
 #dnsmasq.confファイルに以下の項目を追加
 #sudo sh -c "echo 'interface=wlan0\nlisten-address=192.168.7.1\nbind-interfaces\nserver=8.8.8.8\nserver=8.8.4.4\ndomain-needed\nbogus-priv\ndhcp-range=192.168.7.100,192.168.7.199,24h'>>/etc/dnsmasq.conf"
-"""
+
 #reboot after 10s
 sudo reboot
