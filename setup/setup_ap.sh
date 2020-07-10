@@ -2,7 +2,7 @@
 #<<実行方法>>
 #bash setup_ap.sh
 
-#１．電通大さんのやり方と同じ
+#１．電通大さんの参考
 sudo apt-get install hostapd
 sudo apt install dnsmasq iptables
 
@@ -19,22 +19,16 @@ sudo sh -c "echo 'CHANNEL=default\nGATEWAY=10.0.0.1\nWPA_VERSION=2\nETC_HOSTS=0\
 sudo systemctl enable create_ap
 sudo systemctl start create_ap
 
-#２．追加 （参考→http://norikyu.blogspot.com/p/raspberry-pi3-lan-ap.html）
 
+#２．AP化されたラズパイの無線のみを使用するとき追加で必要  （参考→http://norikyu.blogspot.com/p/raspberry-pi3-lan-ap.html）
 
-#network/interfacesファイルに以下の項目を追加
-sudo sh -c "echo 'source-directory /etc/network/interfaces.d\nauto lo\niface lo inet loopback\niface eth0 inet manual\nauto wlan0\nallow-hotplug wlan0\niface wlan0 inet static\naddress 192.168.7.1\nnetmask 255.255.255.0'>>/etc/network/interfaces"
-
-#hostapdのインストール
-sudo apt-get install hostapd
-
-#/etc/default/hostapd を編集
-sudo sh -c 'echo "DAEMON_CONF="/etc/hostapd/hostapd.conf""'
-
+#ファイル編集(network/interfaces, /etc/default/hostapd)
+#sudo sh -c "echo 'source-directory /etc/network/interfaces.d\nauto lo\niface lo inet loopback\niface eth0 inet manual\nauto wlan0\nallow-hotplug wlan0\niface wlan0 inet static\naddress 192.168.7.1\nnetmask 255.255.255.0'>>/etc/network/interfaces"
+#sudo sh -c 'echo "DAEMON_CONF="/etc/hostapd/hostapd.conf""'
 #dnsmasqのインストール
-sudo apt-get install dnsmasq
+#sudo apt-get install dnsmasq
 #オリジナル設定ファイルのバックアプ
-sudo mv /etc/dnsmasq.conf /etc/dnsmasq.conf.orig
+#sudo mv /etc/dnsmasq.conf /etc/dnsmasq.conf.orig
 
-#reboot after 10s
+#reboot 
 sudo reboot

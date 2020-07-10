@@ -1,16 +1,15 @@
-#AP化OFF(２回目以降)
+#AP化OFF
 #<<実行方法>>
 #bash sudo_ap_off.sh
 
-#/etc/network/interfacesの修正(削除)
-#sudo sh -c "rm -rf /etc/create_ap.conf"
-#sudo sh -c "rm -rf /etc/network/interfaces"
-#sudo sh -c "rm -rf /etc/hostapd/hostapd.conf"
-#sudo sh -c "rm -rf /etc/default/hostapd"
-#sudo sh -c "rm -rf /etc/dnsmasq.conf"
 cd create_ap
-sudo sh -c "rm -rf /etc/create_ap.conf"
 
+#AP化のファイル削除(下2つはap_onでファイル編集したとき使用)
+sudo sh -c "rm -rf /etc/create_ap.conf"
+#sudo sh -c "rm -rf /etc/network/interfaces"
+#sudo sh -c "rm -rf /etc/default/hostapd"
+
+#stop, disable
 sudo systemctl stop create_ap
 sudo systemctl disable create_ap
 
